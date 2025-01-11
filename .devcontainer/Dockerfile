@@ -7,6 +7,7 @@ RUN apt-get update \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y git
 # Create non-root user
 RUN useradd -ms /bin/bash vscode
 
