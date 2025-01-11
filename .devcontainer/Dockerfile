@@ -23,6 +23,7 @@ RUN chown -R vscode:vscode /opt/poetry
 
 USER vscode
 
+
 # Set working directory
 WORKDIR /workspace
 
