@@ -8,6 +8,11 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y git
+
+# Install Node.js
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
+    && apt-get install -y nodejs
+
 # Create non-root user
 RUN useradd -ms /bin/bash vscode
 
@@ -22,6 +27,7 @@ RUN curl -sSL https://install.python-poetry.org | python3 - \
 RUN chown -R vscode:vscode /opt/poetry
 
 USER vscode
+
 
 
 # Set working directory

@@ -2,7 +2,7 @@
     "name": "FastAPI Poetry Development Container",
     "dockerFile": "Dockerfile",
     "forwardPorts": [8000],
-    "postCreateCommand": "poetry install --no-root",
+    "postCreateCommand": "poetry config virtualenvs.in-project true && poetry install",
     "customizations": {
         "vscode": {
             "extensions": [
@@ -10,19 +10,17 @@
                 "ms-vscode.git",
                 "ms-python.vscode-pylance",
                 "ms-azuretools.vscode-docker",
-                "streetsidesoftware.code-spell-checker",
-                "njpwerner.autodocstring",
+                "ms-python.black-formatter",
                 "kevinrose.vsc-python-indent",
                 "charliermarsh.ruff"
             ],
             "settings": {
-                "python.defaultInterpreterPath": "/opt/poetry/venv",
-                "python.linting.enabled": true,
+                "python.defaultInterpreterPath": "${workspaceFodler}/.venv/bin/python",
                 "python.linting.provider": "ruff",
                 "python.formatting.provider": "black",
                 "editor.formatOnSave": true,
                 "editor.codeActionsOnSave": {
-                    "source.organizeImports": true
+                    "source.organizeImports": "always"
                 },
                 "[python]": {
                     "editor.defaultFormatter": "ms-python.black-formatter"
